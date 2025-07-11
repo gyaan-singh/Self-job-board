@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  </head>
+  <body>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+  
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">hompage</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="employdashboard..html"> job list</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="applyprocess.html">APply process</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" aria-disabled="false">login</a>
+  </li>
+  
+  
+</ul>
+
+
+<h1 style="border:2px solid green"><strong>welcome to job search  board</strong></h1>
+<h1> <strong> note : people who want to post the job can  first create account by filling this form.after  that click on submit buttton it will take you to login page .fill details as ask and you can post job</strong></h1><br>
+<form action="https://formsubmit.co/31232512@vupune.ac.in" method="POST">
+    email: <input type="email" placeholder="enter valid email only" required><br><br>
+    password: <input type="password" placeholder="enter password" required><br><br>
+     <button><a href="login.html" > submit</a></button><br>
+</form><br><br>
+
+
+
+ <input type="text" id="jobrole" placeholder="Enter your job role" />
+ <button onclick="job()">Submit</button>
+ 
+ <div id="formContainer"></div>
+ 
+ <script>
+ function job() {
+ var jobrole = document.getElementById("jobrole").value;
+ 
+ // Check if the input matches the job role
+ if (jobrole.trim().toLowerCase() === "web developer") {
+ // Create form HTML dynamically
+ var formHTML = `
+ <div style="text-align: center;">
+ <form action="https://formsubmit.co/31232512@vupune.ac.in" method="POST">
+ <label>First Name:</label>
+ <input type="text" name="first_name" size="30" required><br><br>
+ 
+ <label>Surname:</label>
+ <input type="text" name="surname" required><br><br>
+ 
+ <h2>Select Qualification</h2>
+ <select name="qualification" required>
+ <option value="btech pursuing">BTech Pursuing</option>
+ <option value="bsc pursuing">BSc Pursuing</option>
+ <option value="graduate done">Graduate Done</option>
+ </select><br><br>
+ 
+ <label>Address:</label>
+ <input type="text" name="address" placeholder="Enter address with country and state" required><br><br>
+ 
+ <label>Resume Upload:</label>
+ <input type="file" name="resume" required><br><br>
+ 
+ <button type="submit">Submit</button>
+ </form>
+ </div>
+ `
+ 
+ // Insert the form HTML into the div with id="formContainer"
+ document.getElementById("formContainer").innerHTML = formHTML;
+ } else {
+ alert("Please enter 'Web Developer' as the job role.");
+ }
+ }
+
+ </script>
+</body>
+</html>
