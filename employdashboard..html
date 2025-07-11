@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Employer Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+        }
+        header {
+            background-color: #004085;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        .dashboard {
+            display: flex;
+            justify-content: space-around;
+            padding: 2rem;
+        }
+        .section {
+            background-color: white;
+            padding: 1.5rem;
+            margin: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 45%;
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+        .job-list, .account-info {
+            margin-top: 1rem;
+        }
+        .job-card {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .job-card a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .job-form input, .job-form select, .job-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+        footer {
+            background-color: #004085;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-row input {
+            width: 48%;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Employer Dashboard</h1>
+</header>
+
+<div class="dashboard">
+    <!-- Account Management Section -->
+    <div class="section account-info">
+        <h2>Account Management</h2>
+        <form action="#" method="POST">
+            <label for="companyName">Company Name</label>
+            <input type="text" id="companyName" name="companyName" placeholder="Enter company name" required>
+            
+            <label for="email">Company Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter company email" required>
+
+            <label for="companyLocation">Company Location</label>
+            <input type="text" id="companyLocation" name="companyLocation" placeholder="Enter company location" required>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <!-- Posted Jobs Section -->
+    <div class="section job-list">
+        <h2>Posted Jobs</h2>
+        
+        <!-- Job Search Box -->
+        <div class="search-container">
+            <input type="search" id="jobrole" placeholder="Enter job for search like Web Developer">
+            <button onclick="jobSearch()">Search</button>
+        </div>
+
+        <!-- Job Cards -->
+        <div id="jobCardsContainer">
+            <div class="job-card" data-title="Frontend Developer">
+                <span><strong>Frontend Developer</strong></span>
+                <a href="#">Edit</a> | <a href="#">Delete</a>
+            </div>
+            <div class="job-card" data-title="Backend Engineer">
+                <span><strong>Backend Engineer</strong></span>
+                <a href="#">Edit</a> | <a href="#">Delete</a>
+            </div>
+            <div class="job-card" data-title="UI/UX Designer">
+                <span><strong>UI/UX Designer</strong></span>
+                <a href="#">Edit</a> | <a href="#">Delete</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post New Job Section -->
+    <div class="section job-form">
+        <h2>Post a New Job</h2>
+        <form action="#" method="POST">
+            <label for="jobTitle">Job Title</label>
+            <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
+
+            <label for="jobLocation">Job Location</label>
+            <input type="text" id="jobLocation" name="jobLocation" placeholder="Enter job location" required>
+
+            <label for="jobDescription">Job Description</label>
+            <textarea id="jobDescription" name="jobDescription" rows="4" placeholder="Enter job description" required></textarea>
+
+            <label for="jobType">Job Type</label>
+            <select id="jobType" name="jobType" required>
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Internship">Internship</option>
+                <option value="Contract">Contract</option>
+            </select>
+
+            <label for="jobSalary">Salary</label>
+            <input type="text" id="jobSalary" name="jobSalary" placeholder="Enter salary" required>
+
+            <button type="submit">Post Job</button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Job Board Demo</p>
+</footer>
+
+<script>
+// Function for Job Search
+function jobSearch() {
+    // Get the search input value
+    const searchTerm = document.getElementById("jobrole").value.trim().toLowerCase();
+    
+    // Get all job cards
+    const jobCards = document.querySelectorAll(".job-card");
+    
+    let foundMatch = false;
+
+    // Loop through each job card and check if it matches the search term
+    jobCards.forEach(function(card) {
+        const jobTitle = card.getAttribute("data-title").toLowerCase();
+        
+        // If the job title contains the search term, show it; otherwise, hide it
+        if (jobTitle.includes(searchTerm)) {
+            card.style.display = "flex"; // Show the job card
+            foundMatch = true;
+        } else {
+            card.style.display = "none"; // Hide the job card
+        }
+    });
+    
+    // If no job matches, inform the user
+    if (!foundMatch && searchTerm !== "") {
+        alert("No jobs found matching your search.");
+    }
+}
+</script>
+
+</body>
+</html>
